@@ -106,11 +106,11 @@ def loadTranscripts(fileName):
 			geneDict[geneID][1][transcriptPos][1].append((eStart,eEnd))
 	return geneDict
 
-def loadRegulatedTranscripts(regulatedTable):
+def loadRegulatedTranscripts(regulatedTable,separator=","):
 	transcriptRegDict = dict()	#dict of transcriptID -> reg-type
 	with open (regulatedTable,"r") as table_reader:
 		for i,line in enumerate(table_reader):
-			lsp = line.strip().split("\t")
+			lsp = line.strip().split(separator)
 			if lsp[0]=="target":continue	#header
 			transcriptID = lsp[0]
 			upReg = None
@@ -468,33 +468,22 @@ def writeOutputReciprocal(output_reciprocal,reciprocalEvaluation):
 if __name__ == '__main__':
 	parser = argparse.ArgumentParser()
 	parser.add_argument('transcriptTable', type=str, help="Table of transcript exons in .gtf format")
-	parser.add_argument('regulatedTable', type=str, help="Table of transcriptIDs that are affected")
+	parser.add_argument('regulatedTable', type=str, help="Table of transcriptIDs that are differentially expressed")
 	parser.add_argument('--output_all', type=str, help="Output")
 	parser.add_argument('--output_regulated', type=str, help="Output")
-	parser.add_argument('--output_regulated_Breakdown', type=str, help="Output")
 	parser.add_argument('--output_reciprocal', type=str, help="Output")
+	parser.add_argument('--separator', type=str, default=",", help="Column separator for the differential transcript expression table")
 	args = parser.parse_args()
 	
 	geneDict = loadTranscripts(args.transcriptTable)
 	
-	trancriptReg = loadRegulatedTranscripts(args.regulatedTable)
+	trancriptReg = loadRegulatedTranscripts(args.regulatedTable,separator=args.separator)
 	fullEvaluation,regulatedEvaluation,reciprocalEvaluation = evaluateGenes(geneDict,trancriptReg)
 	
 	if args.output_all is not None:
 		writeOutputAll(args.output_all,fullEvaluation)
 	if args.output_regulated is not None:
 		writeOutputRegulated(args.output_regulated,regulatedEvaluation)
-	if args.output_regulated_Breakdown is not None:
-		writeOutputRegulatedBreakdown(args.output_regulated_Breakdown,regulatedEvaluation)
 	if args.output_reciprocal is not None:
 		writeOutputReciprocal(args.output_reciprocal,reciprocalEvaluation)
-
-
-
-
-
-
-
-
-
 

@@ -1,16 +1,17 @@
+# Idenify alternative splicing events from differentially expressed genes
 
-Script to identify event types for DEAD-dependent differentially expressed genes
+This script was used to identify event types for DEAD-dependent differentially expressed genes
 
 Created by Maximilian Sack, Bioinformatics Group, Department of Computer Science and Interdisciplinary Centre for Bioinformatics, Leipzig University
 
 Part of the Study:
 
 A structured RNA balances DEAD-box RNA helicase function in plant alternative splicing control (2026)
-
 Rica Burgardt, Julia Bauer, Maren Reinhardt, Natalie Rupp, Christoph Engel, Lukas Hellmann, Maximilian Sack, Zasha Weinberg, and Andreas Wachter
 
 Cite that paper if you use this script.
 
+## Usage
 
 Example command line:
 ```
@@ -35,3 +36,4 @@ Chr1    Araport11       exon    199527  199763  .       +       .       transcri
 Chr1    Araport11       exon    199890  199959  .       +       .       transcript_id "AT1G01550_P1"; gene_id "AT1G01550"; Note "BPS1-like";
 Chr1    Araport11       exon    200511  201775  .       +       .       transcript_id "AT1G01550_P1"; gene_id "AT1G01550"; Note "BPS1-like";
 ```
+See also `AtRTDv2_QUASI_19April2016.gtf` on [AtRTDv2](https://ics.hutton.ac.uk/atRTD/).
