@@ -1,0 +1,5 @@
+nPairsForGene	gene	eventType	up-reg-ID	up-reg-eventType	down-reg-ID	down-reg-eventType
+2	AT1G01260	intron_ret	AT1G01260_P1	intron_retention	AT1G01260_P3	intron_skip
+2	AT1G01550	intron_ret	AT1G01550_P2	intron_retention	AT1G01550_P1	intron_skip
+2	AT1G04300	intron_ret	AT1G04300_ID71	intron_retention	AT1G04300_P1	intron_skip
+2	AT1G05630	intron_ret	AT1G05630_P1	intron_retention	AT1G05630_P2	intron_skip
